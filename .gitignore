@@ -1,0 +1,7 @@
+*.[ao]
+*.out
+.DS_Store
+._.DS_Store
+/.vscode
+.bin
+/build
