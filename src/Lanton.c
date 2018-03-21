@@ -1,4 +1,4 @@
-#include "Lanton.h"
+#include <maglev/include/Lanton.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -117,7 +117,7 @@ int
 add_backend(Lanton_t *lanton, int64_t backend_id)
 {
 	assert(lanton != NULL);
-	assert(backend_id > 0);
+	//assert(backend_id > 0);
 	for(uint32_t i = 0; i < lanton->backend_num; i++)
 	{
 		if(lanton->backend_list[i] == backend_id)
@@ -140,7 +140,7 @@ int
 remove_backend(Lanton_t *lanton, int64_t backend_id)
 {
 	assert(lanton != NULL);
-	assert(backend_id > 0);
+	//assert(backend_id > 0);
 
 	int not_found = 1;
 	for (uint32_t i = 0; i < lanton->backend_num; i++)
@@ -178,8 +178,21 @@ remove_backend(Lanton_t *lanton, int64_t backend_id)
 }
 
 
-int32_t
-lookup_backend(Lanton_t *lanton, void *object, unsigned long obj_len)
+//int64_t
+//lookup_backend(Lanton_t *lanton, void *object, unsigned long obj_len)
+//{
+//	assert(lanton != NULL);
+//	if(lanton->backend_num == 0)
+//	{
+//		return -1;
+//	}
+
+//	uint32_t hashcode = __default_hash_fun((const char *)object, obj_len);
+//	return lanton->backend_list[lanton->lookup[hashcode % lanton->lookuptb_size]];
+//}
+
+int64_t
+lookup_backend(Lanton_t *lanton, uint64_t hashcode)
 {
 	assert(lanton != NULL);
 	if(lanton->backend_num == 0)
@@ -187,6 +200,6 @@ lookup_backend(Lanton_t *lanton, void *object, unsigned long obj_len)
 		return -1;
 	}
 
-	uint32_t hashcode = __default_hash_fun((const char *)object, obj_len);
+	//uint32_t hashcode = __default_hash_fun((const char *)object, obj_len);
 	return lanton->backend_list[lanton->lookup[hashcode % lanton->lookuptb_size]];
 }

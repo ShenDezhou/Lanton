@@ -61,8 +61,9 @@ int add_backend(Lanton_t *lanton, int64_t backend_id);
 
 int remove_backend(Lanton_t *lanton, int64_t backend_id);
 
-int32_t lookup_backend(Lanton_t *lanton, void *object, unsigned long obj_len);
+//int64_t lookup_backend(Lanton_t *lanton, void *object, unsigned long obj_len);
 
+int64_t lookup_backend(Lanton_t *lanton, uint64_t hashcode);
 #ifdef __cplusplus
 }
 #endif
